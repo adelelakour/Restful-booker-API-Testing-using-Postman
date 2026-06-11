@@ -1,7 +1,6 @@
 import requests
 from jsonschema import validate
 
-
 def test_get_token_schema(base_url):
     schema = {
         "type": "object",
@@ -25,7 +24,6 @@ def test_get_token_schema(base_url):
     json_data = response.json()
 
     validate(instance=json_data, schema=schema)
-
 
 
 def test_create_booking_schema(base_url, auth_token, test_create_booking):
