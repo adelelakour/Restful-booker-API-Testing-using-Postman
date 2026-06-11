@@ -171,23 +171,19 @@ The API allows bookings to be created with unusually long customer names. This c
 
 
 
-## BUG-005: POST /booking accepts very long name
+## BUG-005: POST /booking accepts invalid checkin / checkout format
 
 **Endpoint:** `POST /booking`
 
 **Scenario:**  
-Create booking request is sent with a very long `firstname` value (eg: name of 70 letters)
+Create booking request is sent with an invalid `checkin` or `checkout` format.
 
 **Expected behavior:**  
-The API should return `400 Bad Request` because name length should not exceed a specific range (ex: 30 letters).
+The API should return `400 Bad Request` because `checkin` or `checkout` format is invalid.
 
 **Actual behavior:**  
 The API returns `200 OK` and creates the booking.
 
 **Impact:**  
-The API allows bookings to be created with unusually long customer names. This can lead to poor data quality, display issues in user interfaces or reports, and unreliable booking records if no reasonable length validation is applied.
-
-
-
-
+The API allows bookings to be created with invalid `checkin` or `checkout` date formats. This can lead to poor data quality and unreliable booking records, making it harder to filter, search, or report bookings by date.
 
